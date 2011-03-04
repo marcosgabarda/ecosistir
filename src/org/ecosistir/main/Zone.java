@@ -7,7 +7,7 @@ import edu.dhbw.andar.ARObject;
  * @author Marcos Gabarda
  *
  */
-public abstract class Zone  extends ARObject
+public abstract class Zone extends ARObject
 {
 
 	public Zone(String name, String patternName, double markerWidth,

@@ -1,4 +1,4 @@
-package org.ecosistir.main;
+package com.ecosistir.game;
 
 public class Player 
 {

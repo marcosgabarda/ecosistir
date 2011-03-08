@@ -1,4 +1,6 @@
-package org.ecosistir.main;
+package com.ecosistir.android;
+
+import org.ecosistir.main.R;
 
 import android.app.Activity;
 import android.os.Bundle;

@@ -2,4 +2,6 @@
 <resources>
     <string name="hello">Hello World, Ecosistir!</string>
     <string name="app_name">Ecosistir</string>
+    <string name="duration">Duración de la partida:</string>
+    <string name="n_players">Nº Jugadores:</string>
 </resources>

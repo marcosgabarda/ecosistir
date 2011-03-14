@@ -1,10 +1,10 @@
-package com.ecosistir.android;
+package com.ecosistir.examples;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import org.ecosistir.main.R;
+import com.ecosistir.android.R;
 
 import android.app.Activity;
 import android.hardware.Camera;

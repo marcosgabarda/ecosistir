@@ -13,18 +13,53 @@ public final class Game
 	
 	private ArrayList<Zone> board;
 	
+	static private Game game = null;
+	
 	private void buildBoard()
 	{
 		board = new ArrayList<Zone>();
 		board.add(Sea.getInstance());
 	}
 	
-	public Game(int rounds, ArrayList<Player> players)
+	private Game()
+	{
+		players = new ArrayList<Player>();
+	}
+	
+	private Game(int rounds, ArrayList<Player> players)
 	{
 		this.rounds = rounds;
 		this.players = players;
 		buildBoard();
 	}
+	
+	static public Game getGame()
+	{
+		return game;
+	}
+	
+	static public Game newGame()
+	{
+		game = new Game();
+		return game;
+	}
+	
+	public void setDuration(int rounds)
+	{
+		this.rounds = rounds;
+	}
+	
+	public int getDuration()
+	{
+		return rounds;
+	}
+	
+	public void addPlayer(Player player)
+	{
+		players.add(player);
+	}
+	
+	
 	
 	public void run()
 	{

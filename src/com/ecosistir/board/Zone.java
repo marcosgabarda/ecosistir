@@ -17,6 +17,10 @@ public abstract class Zone extends ARObject
 
 	private int y_size = 5;
 	
+	private int food;
+	
+	private int movement;
+	
 	private ArrayList<Square> squares;
 	
 	public Zone(String name, String patternName, double markerWidth,
@@ -38,6 +42,26 @@ public abstract class Zone extends ARObject
 	{
 		// TODO Auto-generated method stub
 		
+	}
+
+	public void setMovement(int movement)
+	{
+		this.movement = movement;
+	}
+
+	public int getMovement()
+	{
+		return movement;
+	}
+
+	public void setFood(int food)
+	{
+		this.food = food;
+	}
+
+	public int getFood()
+	{
+		return food;
 	}
 
 }

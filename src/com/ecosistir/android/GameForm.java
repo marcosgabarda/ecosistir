@@ -86,6 +86,10 @@ public class GameForm extends Activity
 	
 	protected void createPlayers()
 	{
+		Game game = Game.getGame();
+		final Spinner spinner = (Spinner) findViewById(R.id.spinner1);
+		int players = Integer.valueOf((String)spinner.getSelectedItem());
+		game.setNumPlayers(players);
 		Intent intent = new Intent(this, PlayerForm.class);
 		startActivity(intent);
 	}

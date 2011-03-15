@@ -4,4 +4,6 @@
     <string name="app_name">Ecosistir</string>
     <string name="duration">Duración de la partida:</string>
     <string name="n_players">Nº Jugadores:</string>
+    <string name="name">Nombre</string>
+    <string name="choose_animal">Selecciona el animal con el que vas a jugar:</string>
 </resources>

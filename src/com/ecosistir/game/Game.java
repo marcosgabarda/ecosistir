@@ -11,6 +11,8 @@ public final class Game
 	
 	private ArrayList<Player> players;
 	
+	private int numPlayers;
+	
 	private ArrayList<Zone> board;
 	
 	static private Game game = null;
@@ -54,12 +56,25 @@ public final class Game
 		return rounds;
 	}
 	
+	public void setNumPlayers(int numPlayers)
+	{
+		this.numPlayers = numPlayers;
+	}
+	
+	public int getNumPlayers()
+	{
+		return numPlayers;
+	}
+	
 	public void addPlayer(Player player)
 	{
 		players.add(player);
 	}
 	
-	
+	public ArrayList<Player> getPlayers()
+	{
+		return players;
+	}
 	
 	public void run()
 	{

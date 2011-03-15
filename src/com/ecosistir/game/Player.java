@@ -2,7 +2,7 @@ package com.ecosistir.game;
 
 public class Player 
 {
-	private String name;
+	private String name = "";
 	
 	private double score;
 

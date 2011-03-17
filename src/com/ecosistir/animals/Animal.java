@@ -14,8 +14,8 @@ public abstract class Animal extends ARObject
 	}
 
 	@Override
-	public void init(GL10 arg0) {
-		// TODO Auto-generated method stub
-		
+	public void init(GL10 arg0)
+	{
+		// TODO
 	}
 }

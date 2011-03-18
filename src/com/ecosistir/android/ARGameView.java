@@ -7,11 +7,12 @@ import edu.dhbw.andar.ARToolkit;
 import edu.dhbw.andar.AndARActivity;
 import edu.dhbw.andar.exceptions.AndARException;
 import android.os.Bundle;
+import android.util.Log;
 
 public class ARGameView extends AndARActivity
 {
 	//private RealWord realWorld;
-
+	Abrelatas abrelatas;
 	ARToolkit artoolkit;
 	
 	/** Called when the activity is first created. */
@@ -19,6 +20,7 @@ public class ARGameView extends AndARActivity
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
+		
 		//this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		//this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
 		//		WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -34,13 +36,15 @@ public class ARGameView extends AndARActivity
 			//register a object for each marker type
 			artoolkit = super.getArtoolkit();
 			
-			Abrelatas abrelatas = Abrelatas.getInstance();
+			//abrelatas = Abrelatas.getInstance();
+			abrelatas = new Abrelatas("abrelatas", "patt.hiro", 80.0, 
+					new double[]{0.0});
 			artoolkit.registerARObject(abrelatas);
 			
 		
 		} catch (AndARException ex){
 			//handle the exception, that means: show the user what happened
-			System.out.println("");
+			Log.e("AndAR EXCEPTION", ex.getMessage());
 		}
 		
 		startPreview();
@@ -48,6 +52,7 @@ public class ARGameView extends AndARActivity
 
 	public void uncaughtException(Thread thread, Throwable ex)
 	{
+		Log.e("AndAR EXCEPTION", ex.getMessage());
 		finish();
 	}
 

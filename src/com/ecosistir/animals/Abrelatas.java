@@ -62,7 +62,7 @@ public class Abrelatas extends Animal
 	{
 		//("test", "patt.hiro", 80.0, new double[]{0,0});
 		String name = "Abrelatas";
-		String patternName = "barcode.pat"; 
+		String patternName = "barcode.patt"; 
 		double markerWidth = 80.0;
 		double[] markerCenter = new double[]{0.0};
 		return new Abrelatas(name, patternName, markerWidth, markerCenter);

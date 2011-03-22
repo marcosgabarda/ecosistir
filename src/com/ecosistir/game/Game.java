@@ -9,6 +9,9 @@ public final class Game
 {
 	private int rounds;
 	
+	private int current_round;
+	private int current_player;
+	
 	private ArrayList<Player> players;
 	
 	private int numPlayers;
@@ -26,12 +29,16 @@ public final class Game
 	private Game()
 	{
 		players = new ArrayList<Player>();
+		current_round = 0;
+		current_player = 0;
 	}
 	
 	private Game(int rounds, ArrayList<Player> players)
 	{
 		this.rounds = rounds;
 		this.players = players;
+		current_round = 0;
+		current_player = 0;
 		buildBoard();
 	}
 	
@@ -89,6 +96,16 @@ public final class Game
 				System.out.println("Player: " + player.getName());
 			}
 		}
+	}
+	
+	public int getCurrentRound()
+	{
+		return current_round;
+	}
+	
+	public Player getCurrentPlayer()
+	{
+		return players.get(current_player);
 	}
 	
 	/**

@@ -68,3 +68,4 @@ public class CustomRenderer implements OpenGLRenderer {
 		gl.glEnable(GL10.GL_NORMALIZE);
 	}
 }
+

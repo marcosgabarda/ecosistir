@@ -1,18 +1,21 @@
 package com.ecosistir.android;
 
-import com.ecosistir.animals.Abrelatas;
 import com.ecosistir.examples.CustomRenderer;
 
 import edu.dhbw.andar.ARToolkit;
 import edu.dhbw.andar.AndARActivity;
 import edu.dhbw.andar.exceptions.AndARException;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.SurfaceHolder;
 
-public class ARGameView extends AndARActivity
+public class ARGameView extends AndARActivity implements SurfaceHolder.Callback
 {
 	//private RealWord realWorld;
-
+	
 	ARToolkit artoolkit;
+	
+	edu.dhbw.andar.pub.CustomObject someObject;
 	
 	/** Called when the activity is first created. */
 	@Override
@@ -34,20 +37,33 @@ public class ARGameView extends AndARActivity
 			//register a object for each marker type
 			artoolkit = super.getArtoolkit();
 			
-			Abrelatas abrelatas = Abrelatas.getInstance();
-			artoolkit.registerARObject(abrelatas);
+			//object = Abrelatas.getInstance();
+			//artoolkit.registerARObject(object);
+			
+			someObject = new edu.dhbw.andar.pub.CustomObject
+			("test", "patt.hiro", 80.0, new double[]{0,0});
+			artoolkit.registerARObject(someObject);
+			
+			someObject = new edu.dhbw.andar.pub.CustomObject
+			("test", "android.patt", 80.0, new double[]{0,0});
+			artoolkit.registerARObject(someObject);
+			
+			someObject = new edu.dhbw.andar.pub.CustomObject
+			("test", "barcode.patt", 80.0, new double[]{0,0});
+			artoolkit.registerARObject(someObject);
 			
 		
 		} catch (AndARException ex){
 			//handle the exception, that means: show the user what happened
-			System.out.println("");
+			Log.e("ecosistir", ex.getMessage());
 		}
-		
+		Log.i("ecosistir", "Starting preview...");
 		startPreview();
 	}
 
 	public void uncaughtException(Thread thread, Throwable ex)
 	{
+		Log.e("ecosistir", ex.getMessage());
 		finish();
 	}
 

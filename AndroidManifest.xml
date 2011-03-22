@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       android:versionCode="1"
-      android:versionName="1.0" package="com.ecosistir.android">
-    
+      android:versionName="0.1" package="com.ecosistir.android">
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.CAMERA"></uses-permission>
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
-    <application android:icon="@drawable/icon" android:label="@string/app_name" android:debuggable="true">
-        <activity android:name="Main"
+    <supports-screens android:smallScreens="true" 
+                      android:normalScreens="true"
+                      android:largeScreens="true" 
+                      android:anyDensity="true" />
+
+    <application android:icon="@drawable/icon" 
+                 android:label="@string/app_name" 
+                 android:debuggable="true">
+                 
+        <activity android:name="com.ecosistir.android.Main"
                   android:label="@string/app_name" 
                   android:screenOrientation="landscape" >
             <intent-filter>
@@ -17,11 +25,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="GameForm" android:screenOrientation="landscape"></activity>
-        <activity android:name="PlayerForm" android:screenOrientation="landscape"></activity>
+        
+        <activity android:name="com.ecosistir.android.GameForm" 
+                  android:screenOrientation="landscape"></activity>
+        
+        <activity android:name="com.ecosistir.android.PlayerForm" 
+                  android:screenOrientation="landscape"></activity>
+        
+        <activity android:name="com.ecosistir.android.InitTourn" 
+                    android:screenOrientation="landscape"></activity>
+        
+        <activity android:name="com.ecosistir.android.ARGameView"
+                  android:exported="false"
+                  android:clearTaskOnLaunch="true" 
+                  android:screenOrientation="landscape" 
+                  android:icon="@drawable/icon"></activity>
+        <!-- 
         <activity android:name="ARGameView" android:screenOrientation="landscape"
                   android:clearTaskOnLaunch="true"
                   android:noHistory="true"></activity>
-
+                   -->
     </application>
 </manifest>

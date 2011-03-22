@@ -51,7 +51,7 @@ public class PlayerForm extends Activity
 			{
 				if (game.getNumPlayers() == game.getPlayers().size() + 1)
 				{
-					goPreview();
+					startTourn();
 				}
 				else
 				{
@@ -60,38 +60,94 @@ public class PlayerForm extends Activity
 			}
 		});
 		
+		
+		
 		final ImageButton btnGreen = (ImageButton) findViewById(R.id.imageButton2);
 		final ImageButton btnBlue = (ImageButton) findViewById(R.id.imageButton3);
 		final ImageButton btnYellow = (ImageButton) findViewById(R.id.imageButton4);
 		final ImageButton btnOrange = (ImageButton) findViewById(R.id.imageButton5);
 		
-		OnClickListener animalsListener = new OnClickListener()
+
+		
+		btnGreen.setOnClickListener(new OnClickListener()
 		{
 			public void onClick(View v)
 			{
-				//TODO
+				final ImageButton btn1 = (ImageButton) findViewById(R.id.imageButton2);
+				btn1.setImageResource(R.drawable.ic_green_sel);
+				final ImageButton btn2 = (ImageButton) findViewById(R.id.imageButton3);
+				btn2.setImageResource(R.drawable.ic_blue);
+				final ImageButton btn3 = (ImageButton) findViewById(R.id.imageButton4);
+				btn3.setImageResource(R.drawable.ic_yellow);
+				final ImageButton btn4 = (ImageButton) findViewById(R.id.imageButton5);
+				btn4.setImageResource(R.drawable.ic_orange);
 			}
-		};
+		});
 		
-		btnGreen.setOnClickListener(animalsListener);
-		btnBlue.setOnClickListener(animalsListener);
-		btnYellow.setOnClickListener(animalsListener);
-		btnOrange.setOnClickListener(animalsListener);
+		btnBlue.setOnClickListener(new OnClickListener()
+		{
+			public void onClick(View v)
+			{
+				final ImageButton btn1 = (ImageButton) findViewById(R.id.imageButton2);
+				btn1.setImageResource(R.drawable.ic_green);
+				final ImageButton btn2 = (ImageButton) findViewById(R.id.imageButton3);
+				btn2.setImageResource(R.drawable.ic_blue_sel);
+				final ImageButton btn3 = (ImageButton) findViewById(R.id.imageButton4);
+				btn3.setImageResource(R.drawable.ic_yellow);
+				final ImageButton btn4 = (ImageButton) findViewById(R.id.imageButton5);
+				btn4.setImageResource(R.drawable.ic_orange);
+			}
+		});
+		
+		btnYellow.setOnClickListener(new OnClickListener()
+		{
+			public void onClick(View v)
+			{
+				final ImageButton btn1 = (ImageButton) findViewById(R.id.imageButton2);
+				btn1.setImageResource(R.drawable.ic_green);
+				final ImageButton btn2 = (ImageButton) findViewById(R.id.imageButton3);
+				btn2.setImageResource(R.drawable.ic_blue);
+				final ImageButton btn3 = (ImageButton) findViewById(R.id.imageButton4);
+				btn3.setImageResource(R.drawable.ic_yellow_sel);
+				final ImageButton btn4 = (ImageButton) findViewById(R.id.imageButton5);
+				btn4.setImageResource(R.drawable.ic_orange);
+			}
+		});
+		
+		btnOrange.setOnClickListener(new OnClickListener()
+		{
+			public void onClick(View v)
+			{
+				final ImageButton btn1 = (ImageButton) findViewById(R.id.imageButton2);
+				btn1.setImageResource(R.drawable.ic_green);
+				final ImageButton btn2 = (ImageButton) findViewById(R.id.imageButton3);
+				btn2.setImageResource(R.drawable.ic_blue);
+				final ImageButton btn3 = (ImageButton) findViewById(R.id.imageButton4);
+				btn3.setImageResource(R.drawable.ic_yellow);
+				final ImageButton btn4 = (ImageButton) findViewById(R.id.imageButton5);
+				btn4.setImageResource(R.drawable.ic_orange_sel);
+			}
+		});
 	}
 	
 	protected void otherPlayer()
 	{
 		final EditText txtTexto = (EditText)findViewById(R.id.editText1);
 		String texto = txtTexto.getText().toString();
+		if (texto.trim().compareTo("") == 0)
+		{
+			texto = "Jugador " + (game.getPlayers().size() + 1);
+		}
 		player.setName(texto);
+		player.setNumber(game.getPlayers().size() + 1);
 		game.addPlayer(player);
 		Intent intent = new Intent(this, PlayerForm.class);
 		startActivity(intent);
 	}
 	
-    protected void goPreview()
+    protected void startTourn()
     {
-		Intent intent = new Intent(this, ARGameView.class);
+		Intent intent = new Intent(this, InitTourn.class);
 		startActivity(intent);
     }
 }

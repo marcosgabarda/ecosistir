@@ -63,11 +63,7 @@ public class Abrelatas extends ARObject
 	{
 		//("test", "patt.hiro", 80.0, new double[]{0,0});
 		String name = "Abrelatas";
-<<<<<<< HEAD
 		String patternName = "barcode.patt"; 
-=======
-		String patternName = "patt.hiro"; 
->>>>>>> b50b597d0a382cc31dca3965e702493c0fa23905
 		double markerWidth = 80.0;
 		double[] markerCenter = new double[]{0.0};
 		return new Abrelatas(name, patternName, markerWidth, markerCenter);

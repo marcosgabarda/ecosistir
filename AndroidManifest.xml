@@ -14,22 +14,11 @@
                       android:largeScreens="true" 
                       android:anyDensity="true" /> 
 
-<<<<<<< HEAD
-    <supports-screens android:smallScreens="true" 
-                      android:normalScreens="true"
-                      android:largeScreens="true" 
-                      android:anyDensity="true" />
-
     <application android:icon="@drawable/icon" 
                  android:label="@string/app_name" 
                  android:debuggable="true">
                  
         <activity android:name="com.ecosistir.android.Main"
-=======
-    <application android:icon="@drawable/icon" android:label="@string/app_name" 
-                 android:debuggable="true">
-        <activity android:name="Main"
->>>>>>> b50b597d0a382cc31dca3965e702493c0fa23905
                   android:label="@string/app_name" 
                   android:screenOrientation="landscape" >
             <intent-filter>
@@ -37,7 +26,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
         
         <activity android:label="@string/app_name" 
                   android:name="com.ecosistir.android.GameForm" 
@@ -50,13 +38,6 @@
         <activity android:label="@string/app_name"
                   android:name="com.ecosistir.android.InitTourn"
                   android:screenOrientation="landscape"></activity>
-=======
-        <activity android:name="GameForm" android:screenOrientation="landscape" />
-        <activity android:name="PlayerForm" android:screenOrientation="landscape" />
-        <activity android:name="ARGameView" android:screenOrientation="landscape"
-                  android:clearTaskOnLaunch="true"
-                  android:noHistory="true" />
->>>>>>> b50b597d0a382cc31dca3965e702493c0fa23905
 
         <activity android:label="@string/app_name"
                   android:name="com.ecosistir.android.PrepareARGame"></activity>

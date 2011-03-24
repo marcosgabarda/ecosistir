@@ -11,10 +11,14 @@ import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+<<<<<<< HEAD
 import android.view.SurfaceHolder;
+=======
+>>>>>>> b50b597d0a382cc31dca3965e702493c0fa23905
 
 public class ARGameView extends AndARActivity implements SurfaceHolder.Callback
 {
+<<<<<<< HEAD
 	public static String TAG = "ecosistir";
 	
 	private ProgressDialog waitDialog;
@@ -24,6 +28,10 @@ public class ARGameView extends AndARActivity implements SurfaceHolder.Callback
 	private BoxObject someObject2 = null;
 	private BoxObject someObject3 = null;
 	
+=======
+	//private RealWord realWorld;
+	Abrelatas abrelatas;
+>>>>>>> b50b597d0a382cc31dca3965e702493c0fa23905
 	ARToolkit artoolkit;
 	
 	/** Called when the activity is first created. */
@@ -31,6 +39,7 @@ public class ARGameView extends AndARActivity implements SurfaceHolder.Callback
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
+<<<<<<< HEAD
 		super.setNonARRenderer(new Renderer());
 		res = getResources();
 		artoolkit = super.getArtoolkit();
@@ -48,12 +57,43 @@ public class ARGameView extends AndARActivity implements SurfaceHolder.Callback
 	                res.getText(R.string.loading), true);
 			waitDialog.show();
 			new BoardLoader().execute();
+=======
+		
+		//this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		//this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
+		//		WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+		//setContentView(R.layout.aboard);
+		//realWorld = new RealWord(this);
+		//((FrameLayout) findViewById(R.id.frameLayout1)).addView(realWorld);
+		
+		CustomRenderer renderer = new CustomRenderer();//optional, may be set to null
+		super.setNonARRenderer(renderer);//or might be omited
+		
+		try {
+			//register a object for each marker type
+			artoolkit = super.getArtoolkit();
+			
+			//abrelatas = Abrelatas.getInstance();
+			abrelatas = new Abrelatas("abrelatas", "patt.hiro", 80.0, 
+					new double[]{0.0});
+			artoolkit.registerARObject(abrelatas);
+			
+		
+		} catch (AndARException ex){
+			//handle the exception, that means: show the user what happened
+			Log.e("AndAR EXCEPTION", ex.getMessage());
+>>>>>>> b50b597d0a382cc31dca3965e702493c0fa23905
 		}
 	}
 
 	public void uncaughtException(Thread thread, Throwable ex)
 	{
+<<<<<<< HEAD
 		Log.e(TAG, ex.getMessage());
+=======
+		Log.e("AndAR EXCEPTION", ex.getMessage());
+>>>>>>> b50b597d0a382cc31dca3965e702493c0fa23905
 		finish();
 	}
 	

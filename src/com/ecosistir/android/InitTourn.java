@@ -52,7 +52,7 @@ public class InitTourn extends Activity
 	
 	protected void renderBoard()
 	{
-		Intent intent = new Intent(this, ARGameView.class);
+		Intent intent = new Intent(this, PrepareARGame.class);
 		startActivity(intent);
 	}
 }

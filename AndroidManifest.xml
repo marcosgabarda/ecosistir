@@ -26,24 +26,25 @@
             </intent-filter>
         </activity>
         
-        <activity android:name="com.ecosistir.android.GameForm" 
+        <activity android:label="@string/app_name" 
+                  android:name="com.ecosistir.android.GameForm" 
                   android:screenOrientation="landscape"></activity>
         
-        <activity android:name="com.ecosistir.android.PlayerForm" 
+        <activity android:label="@string/app_name"
+                  android:name="com.ecosistir.android.PlayerForm" 
                   android:screenOrientation="landscape"></activity>
         
-        <activity android:name="com.ecosistir.android.InitTourn" 
-                    android:screenOrientation="landscape"></activity>
+        <activity android:label="@string/app_name"
+                  android:name="com.ecosistir.android.InitTourn"
+                  android:screenOrientation="landscape"></activity>
+
+        <activity android:label="@string/app_name"
+                  android:name="com.ecosistir.android.PrepareARGame"></activity>
         
         <activity android:name="com.ecosistir.android.ARGameView"
                   android:exported="false"
                   android:clearTaskOnLaunch="true" 
                   android:screenOrientation="landscape" 
                   android:icon="@drawable/icon"></activity>
-        <!-- 
-        <activity android:name="ARGameView" android:screenOrientation="landscape"
-                  android:clearTaskOnLaunch="true"
-                  android:noHistory="true"></activity>
-                   -->
     </application>
 </manifest>

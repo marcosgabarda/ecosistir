@@ -1,70 +1,90 @@
 package com.ecosistir.android;
 
-import com.ecosistir.examples.CustomRenderer;
+import com.ecosistir.graphics.BoxObject;
+import com.ecosistir.graphics.Renderer;
 
 import edu.dhbw.andar.ARToolkit;
 import edu.dhbw.andar.AndARActivity;
 import edu.dhbw.andar.exceptions.AndARException;
+import android.app.ProgressDialog;
+import android.content.res.Resources;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.SurfaceHolder;
 
 public class ARGameView extends AndARActivity implements SurfaceHolder.Callback
 {
-	//private RealWord realWorld;
+	public static String TAG = "ecosistir";
+	
+	private ProgressDialog waitDialog;
+	private Resources res;
+	
+	private BoxObject someObject1 = null;
+	private BoxObject someObject2 = null;
+	private BoxObject someObject3 = null;
 	
 	ARToolkit artoolkit;
-	
-	edu.dhbw.andar.pub.CustomObject someObject;
 	
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		//this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-		//this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
-		//		WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-		//setContentView(R.layout.aboard);
-		//realWorld = new RealWord(this);
-		//((FrameLayout) findViewById(R.id.frameLayout1)).addView(realWorld);
-		
-		CustomRenderer renderer = new CustomRenderer();//optional, may be set to null
-		super.setNonARRenderer(renderer);//or might be omited
-		
-		try {
-			//register a object for each marker type
-			artoolkit = super.getArtoolkit();
-			
-			//object = Abrelatas.getInstance();
-			//artoolkit.registerARObject(object);
-			
-			someObject = new edu.dhbw.andar.pub.CustomObject
-			("test", "patt.hiro", 80.0, new double[]{0,0});
-			artoolkit.registerARObject(someObject);
-			
-			someObject = new edu.dhbw.andar.pub.CustomObject
-			("test", "android.patt", 80.0, new double[]{0,0});
-			artoolkit.registerARObject(someObject);
-			
-			someObject = new edu.dhbw.andar.pub.CustomObject
-			("test", "barcode.patt", 80.0, new double[]{0,0});
-			artoolkit.registerARObject(someObject);
-			
-		
-		} catch (AndARException ex){
-			//handle the exception, that means: show the user what happened
-			Log.e("ecosistir", ex.getMessage());
+		super.setNonARRenderer(new Renderer());
+		res = getResources();
+		artoolkit = super.getArtoolkit();
+		getSurfaceView().getHolder().addCallback(this);
+	}
+	
+	@Override
+	public void surfaceCreated(SurfaceHolder holder)
+	{
+		super.surfaceCreated(holder);
+    	if(someObject1 == null && someObject2 == null &&
+    			someObject3 == null)
+    	{
+    		waitDialog = ProgressDialog.show(this, "", 
+	                res.getText(R.string.loading), true);
+			waitDialog.show();
+			new BoardLoader().execute();
 		}
-		Log.i("ecosistir", "Starting preview...");
-		startPreview();
 	}
 
 	public void uncaughtException(Thread thread, Throwable ex)
 	{
-		Log.e("ecosistir", ex.getMessage());
+		Log.e(TAG, ex.getMessage());
 		finish();
+	}
+	
+	private class BoardLoader extends AsyncTask<Void, Void, Void>
+	{
+		@Override
+		protected Void doInBackground(Void... params)
+		{
+			someObject1 = new BoxObject("test", "patt.hiro", 80.0, new double[]{0,0});
+			someObject2 = new BoxObject("test", "android.patt", 80.0, new double[]{0,0});
+			someObject3 = new BoxObject("test", "barcode.patt", 80.0, new double[]{0,0});
+			return null;
+		}
+		@Override
+		protected void onPostExecute(Void result)
+		{
+			super.onPostExecute(result);
+			waitDialog.dismiss();
+			try
+			{
+				artoolkit.registerARObject(someObject1);
+				artoolkit.registerARObject(someObject2);
+				artoolkit.registerARObject(someObject3);
+			}
+			catch (AndARException ex)
+			{
+				Log.e(TAG, ex.getMessage());
+			}
+			startPreview();
+		}
+		
 	}
 
 }

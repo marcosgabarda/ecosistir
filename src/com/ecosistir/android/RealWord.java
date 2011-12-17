@@ -11,7 +11,7 @@ public class RealWord extends SurfaceView implements SurfaceHolder.Callback
 {
 	private Camera camera;
 	private SurfaceHolder mHolder;
-	
+
 	public RealWord(Context context)
 	{
 		super(context);
@@ -38,7 +38,7 @@ public class RealWord extends SurfaceView implements SurfaceHolder.Callback
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void surfaceDestroyed(SurfaceHolder holder)
 	{
 		camera.stopPreview();

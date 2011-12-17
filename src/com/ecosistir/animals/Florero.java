@@ -1,6 +1,6 @@
 package com.ecosistir.animals;
 
-public class Florero extends Animal 
+public class Florero extends Animal
 {
 	public Florero(String name, String patternName, double markerWidth,
 			double[] markerCenter)

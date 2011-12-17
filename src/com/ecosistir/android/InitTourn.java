@@ -14,12 +14,12 @@ import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class InitTourn extends Activity 
+public class InitTourn extends Activity
 {
 	private Game game = Game.getGame();
-	
+
 	private Player player = game.getCurrentPlayer();;
-	
+
 	@Override
     public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -27,18 +27,18 @@ public class InitTourn extends Activity
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
         		WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.inittourn);
-        
+
         Typeface tf = Typeface.createFromAsset(getAssets(),
         		"fonts/SRF2.ttf");
-        
+
         TextView tv1 = (TextView) findViewById(R.id.textView1);
         tv1.setText(tv1.getText() + " " + (game.getCurrentRound() + 1));
         tv1.setTypeface(tf);
-        
+
         TextView tv2 = (TextView) findViewById(R.id.textView2);
         tv2.setText(player.getName());
         tv2.setTypeface(tf);
-        
+
 		final ImageButton btnStart = (ImageButton) findViewById(R.id.imageButton1);
 		btnStart.setClickable(true);
 		btnStart.setOnClickListener(new OnClickListener()
@@ -49,7 +49,7 @@ public class InitTourn extends Activity
 			}
 		});
 	}
-	
+
 	protected void renderBoard()
 	{
 		Intent intent = new Intent(this, PrepareARGame.class);

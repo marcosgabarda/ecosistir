@@ -31,7 +31,7 @@ public class Main extends Activity {
 			}
 		});
     }
-    
+
     protected void launchNewGame()
     {
 		Intent intent = new Intent(this, GameForm.class);

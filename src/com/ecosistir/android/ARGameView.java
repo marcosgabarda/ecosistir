@@ -17,16 +17,16 @@ import android.view.SurfaceHolder;
 public class ARGameView extends AndARActivity implements SurfaceHolder.Callback
 {
 	public static String TAG = "ecosistir";
-	
+
 	private ProgressDialog waitDialog;
 	private Resources res;
-	
+
 	private BoxObject someObject1 = null;
 	private BoxObject someObject2 = null;
 	private BoxObject someObject3 = null;
-	
+
 	ARToolkit artoolkit;
-	
+
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -37,7 +37,7 @@ public class ARGameView extends AndARActivity implements SurfaceHolder.Callback
 		artoolkit = super.getArtoolkit();
 		getSurfaceView().getHolder().addCallback(this);
 	}
-	
+
 	@Override
 	public void surfaceCreated(SurfaceHolder holder)
 	{
@@ -45,7 +45,7 @@ public class ARGameView extends AndARActivity implements SurfaceHolder.Callback
     	if(someObject1 == null && someObject2 == null &&
     			someObject3 == null)
     	{
-    		waitDialog = ProgressDialog.show(this, "", 
+    		waitDialog = ProgressDialog.show(this, "",
 	                res.getText(R.string.loading), true);
 			waitDialog.show();
 			new BoardLoader().execute();
@@ -57,7 +57,7 @@ public class ARGameView extends AndARActivity implements SurfaceHolder.Callback
 		Log.e(TAG, ex.getMessage());
 		finish();
 	}
-	
+
 	private class BoardLoader extends AsyncTask<Void, Void, Void>
 	{
 		@Override
@@ -85,7 +85,7 @@ public class ARGameView extends AndARActivity implements SurfaceHolder.Callback
 			}
 			startPreview();
 		}
-		
+
 	}
 
 }

@@ -7,7 +7,7 @@ import javax.microedition.khronos.opengles.GL10;
 import edu.dhbw.andar.ARObject;
 
 /**
- * Una 
+ * Una
  * @author Marcos Gabarda
  *
  */
@@ -16,15 +16,15 @@ public abstract class Zone extends ARObject
 	private int x_size = 5;
 
 	private int y_size = 5;
-	
+
 	private int food;
-	
+
 	private int movement;
-	
+
 	private ArrayList<Square> squares;
-	
+
 	public Zone(String name, String patternName, double markerWidth,
-			double[] markerCenter) 
+			double[] markerCenter)
 	{
 		super(name, patternName, markerWidth, markerCenter);
 		squares = new ArrayList<Square>();
@@ -38,10 +38,10 @@ public abstract class Zone extends ARObject
 	}
 
 	@Override
-	public void init(GL10 arg0) 
+	public void init(GL10 arg0)
 	{
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void setMovement(int movement)
